@@ -61,7 +61,7 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.3-impl \
     android.hardware.soundtrigger@2.2-impl \
     android.hardware.soundtrigger@2.1-impl \
-    android.hardware.soundtrigger@2.0-impl 
+    android.hardware.soundtrigger@2.0-impl
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default \
@@ -238,7 +238,6 @@ endif
 
 # FM
 PRODUCT_PACKAGES += \
-    FM2 \
     libqcomfm_jni \
     qcom.fmradio
 
@@ -387,10 +386,15 @@ PRODUCT_COPY_FILES += \
 # OMX
 TARGET_SUPPORTS_OMX_SERVICE := false
 
+# Overlay (forWlan)
+PRODUCT_PACKAGES += \
+    WifiResCommon_Sys \
+    WifiResTarget
+
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay 
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(LOCAL_PATH)/overlay/packages/apps/CarrierConfig
@@ -562,14 +566,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
+    hostapd_cli \
     libwpa_client \
+    libwifi-hal \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
+    libkeystore-engine-wifi-hidl \
+    libkeystore-wifi-hidl \
     vendor.qti.hardware.wifi.hostapd@1.2.vendor \
     vendor.qti.hardware.wifi.supplicant@2.1.vendor \
-    WifiResCommon \
+    wpa_cli \
     wpa_supplicant \
     wpa_supplicant.conf
+
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
